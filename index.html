@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jical Patel | Portfolio</title>
+    <meta
+      name="description"
+      content="Portfolio website for Jical Patel featuring projects, experience, and contact details."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css?v=20260605-cloud-counters" />
+  </head>
+  <body>
+    <div class="scroll-progress" id="scroll-progress"></div>
+    <div class="grain"></div>
+    <button class="compact-jp" id="compact-jp" aria-label="Open menu">JP</button>
+    <header class="site-header">
+      <a class="logo" href="#top">JP</a>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero section">
+        <p class="mono">OPEN TO WORK - SOFTWARE / DATA / AI ROLES</p>
+        <h1 class="hero-title">
+          <span class="hero-name" data-animate="words">Jical Patel</span>
+          <span class="hero-subtitle" data-animate="words">Building practical projects for real-world impact.</span>
+        </h1>
+        <p class="lead">
+          This portfolio highlights my project work, background, and technical journey.
+          I focus on clean execution, continuous learning, and measurable outcomes.
+        </p>
+        <div class="hero-metrics">
+          <span>Software Engineering</span>
+          <span>AI + Automation</span>
+          <span>Product Mindset</span>
+        </div>
+        <div class="cta-row">
+          <a class="btn" href="#projects">Explore Projects</a>
+          <a class="btn ghost" href="#contact">Get In Touch</a>
+        </div>
+      </section>
+
+      <section id="about" class="section split">
+        <div>
+          <p class="mono">ABOUT</p>
+          <div class="section-bar"></div>
+          <h2 id="about-title">Loading...</h2>
+          <div id="about-paragraphs"></div>
+          <p id="about-closing"></p>
+        </div>
+        <div class="card">
+          <p class="mono" id="about-focus-title">CURRENT FOCUS</p>
+          <ul id="about-focus-list"></ul>
+          <p id="about-impact" class="about-impact"></p>
+          <div id="about-tags" class="about-tags"></div>
+        </div>
+      </section>
+
+      <section id="education" class="section">
+        <p class="mono">EDUCATION</p>
+        <div class="section-bar"></div>
+        <h2>Studies & Foundation</h2>
+        <div class="timeline education-timeline" id="education-timeline"></div>
+      </section>
+
+      <section id="projects" class="section">
+        <p class="mono">PROJECTS</p>
+        <div class="section-bar"></div>
+        <h2>Selected Work</h2>
+        <div class="project-grid" id="projects-grid"></div>
+      </section>
+
+      <section id="experience" class="section">
+        <p class="mono">EXPERIENCE</p>
+        <div class="section-bar"></div>
+        <h2>Background Timeline</h2>
+        <div class="timeline" id="experience-timeline"></div>
+      </section>
+
+      <section id="contact" class="section contact">
+        <p class="mono">CONTACT</p>
+        <div class="section-bar"></div>
+        <h2>Let's connect.</h2>
+        <div class="contact-grid">
+          <p>Email: <a id="contact-email" href="#">Loading...</a></p>
+          <p>LinkedIn: <a id="contact-linkedin" href="#" target="_blank" rel="noreferrer">Loading...</a></p>
+          <p>Phone: <a id="contact-phone" href="#">Loading...</a></p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-top">
+        <p class="mono" id="footer-eyebrow">READY TO BUILD</p>
+        <h2 id="footer-title">Let's create something meaningful together.</h2>
+        <a class="btn" id="footer-cta" href="#contact">Start a Conversation</a>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <h3 id="footer-brand-name">Jical Patel</h3>
+            <p id="footer-brand-role">Software Developer</p>
+          </div>
+          <div class="footer-links" id="footer-quick-links"></div>
+          <div class="footer-links" id="footer-social-links"></div>
+        </div>
+        <p id="footer-copyright">© 2026 Jical Patel. Built with care and detail.</p>
+        <div class="counter-wrap">
+          <p class="counter-line">
+            Visits
+            <span id="visit-count" class="digital-count">0000</span>
+          </p>
+          <p class="counter-line">
+            Clicks
+            <span id="click-count" class="digital-count">0000</span>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <div class="chatbot-shell" id="chatbot-shell" aria-hidden="true">
+      <div class="chatbot-backdrop" data-chat-close></div>
+      <section class="chatbot-panel" role="dialog" aria-modal="true" aria-labelledby="chatbot-title">
+        <div class="chatbot-head">
+          <div>
+            <p class="mono">JICAL'S ASSISTANT</p>
+            <h2 id="chatbot-title">Ask about my work.</h2>
+          </div>
+          <button class="chatbot-close" type="button" data-chat-close aria-label="Close chatbot">Close</button>
+        </div>
+        <div class="chatbot-messages" id="chatbot-messages">
+          <div class="chat-message bot">
+            <p>Hi, I am Jical's portfolio assistant. Ask me about projects, experience, education, skills, resume, or contact.</p>
+          </div>
+        </div>
+        <div class="chatbot-suggestions" aria-label="Suggested questions">
+          <button type="button" data-chat-suggestion="Tell me about Jical's projects">Projects</button>
+          <button type="button" data-chat-suggestion="What experience does Jical have?">Experience</button>
+          <button type="button" data-chat-suggestion="What skills does Jical have?">Skills</button>
+          <button type="button" data-chat-suggestion="How can I contact Jical?">Contact</button>
+        </div>
+        <form class="chatbot-form" id="chatbot-form">
+          <input
+            id="chatbot-input"
+            type="text"
+            autocomplete="off"
+            placeholder="Ask something about Jical..."
+            aria-label="Ask the chatbot"
+          />
+          <button type="submit">Send</button>
+        </form>
+      </section>
+    </div>
+
+    <script src="script.js?v=20260605-chatbot"></script>
+  </body>
+</html>

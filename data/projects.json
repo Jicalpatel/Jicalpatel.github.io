@@ -1,0 +1,65 @@
+[
+  {
+    "id": "singing-voice-synthesis",
+    "period": "Spring 2026",
+    "title": "Singing Voice Synthesis Using Machine Learning",
+    "subtitle": "Text-to-singing audio pipeline",
+    "description": "Built an end-to-end ML pipeline that turns lyrics into sung audio using FastSpeech2 Conformer, HiFi-GAN, transfer learning, CSD dataset analysis, and a Gradio interface.",
+    "keywords": ["Generative AI", "Audio ML", "FastSpeech2", "HiFi-GAN", "Gradio"],
+    "href": "projects/singing-voice-synthesis.html"
+  },
+  {
+    "id": "distributed-hip-dnn",
+    "period": "Fall 2025",
+    "title": "Distributed HIP DNN Pipeline",
+    "subtitle": "MPI4Py to AMD HIP kernels",
+    "description": "Designed a distributed training architecture where MPI producers stream sharded batches into HIP consumers for GPU kernel execution, benchmarking throughput, latency, and scale.",
+    "keywords": ["Distributed Systems", "GPU Computing", "MPI4Py", "AMD HIP", "DNN"],
+    "href": "projects/distributed-hip-dnn.html"
+  },
+  {
+    "id": "medcare",
+    "period": "Jan 2025 - May 2025",
+    "title": "MedCare",
+    "subtitle": "Disease prediction with Django",
+    "description": "Developed disease prediction machine learning models and integrated them with a Django web interface for accessible healthcare decision support.",
+    "keywords": ["Machine Learning", "Django", "Healthcare", "Prediction Models", "Web App"],
+    "href": "projects/medcare.html"
+  },
+  {
+    "id": "hybrid-bucket-radix",
+    "period": "Spring 2025",
+    "title": "Hybrid Bucket-Radix Sorting Study",
+    "subtitle": "GPU vs CPU algorithm comparison",
+    "description": "Compared non-comparison sorting strategies across GPU and CPU architectures, including a hybrid bucket-radix approach focused on performance, memory behavior, and scalability.",
+    "keywords": ["Algorithms", "GPU Acceleration", "Performance", "CUDA/HIP Concepts", "Benchmarking"],
+    "href": "projects/hybrid-bucket-radix.html"
+  },
+  {
+    "id": "co-purchasing-recommendation",
+    "period": "Fall 2024",
+    "title": "Co-Purchasing Analysis and Recommendation",
+    "subtitle": "Data mining for product discovery",
+    "description": "Analyzed co-purchase patterns to surface product relationships and recommendation opportunities using database design, association thinking, and insight-focused reporting.",
+    "keywords": ["Recommendation Systems", "Data Mining", "SQL", "Analytics", "Market Basket"],
+    "href": "projects/co-purchasing-recommendation.html"
+  },
+  {
+    "id": "uber-clone",
+    "period": "Nov 2023 - Feb 2024",
+    "title": "Uber Clone Ride-Hailing App",
+    "subtitle": "Mobile-first booking workflow",
+    "description": "Developed a blockchain-based ride-hailing system using smart contracts, Ethereum Rinkeby Testnet crypto payments, real-time GPS tracking, and automated fare calculations.",
+    "keywords": ["Blockchain", "Smart Contracts", "Ethereum", "GPS Tracking", "Ride Hailing"],
+    "href": "projects/uber-clone.html"
+  },
+  {
+    "id": "early-skin-disease-detection",
+    "period": "May 2023 - Aug 2023",
+    "title": "Skin Disease Identification",
+    "subtitle": "AI-assisted healthcare screening",
+    "description": "Built an AI model with 75% accuracy using TensorFlow, Keras, and OpenVINO, then deployed a mobile-friendly UI for easy diagnosis access.",
+    "keywords": ["TensorFlow", "Keras", "OpenVINO", "Healthcare AI", "Mobile UI"],
+    "href": "projects/early-skin-disease-detection.html"
+  }
+]

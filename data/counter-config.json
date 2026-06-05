@@ -1,0 +1,12 @@
+{
+  "enabled": true,
+  "firebase": {
+    "apiKey": "AIzaSyAy8swj3LhDJ5ISJMNiF-GEWsOENL1lPeM",
+    "authDomain": "jical-portfolio.firebaseapp.com",
+    "projectId": "jical-portfolio",
+    "storageBucket": "jical-portfolio.firebasestorage.app",
+    "messagingSenderId": "447079174082",
+    "appId": "1:447079174082:web:ea21112f43ce6e9e42d05b",
+    "measurementId": "G-51Y0N989D5"
+  }
+}

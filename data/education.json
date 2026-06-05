@@ -1,0 +1,29 @@
+[
+  {
+    "period": "Aug 2024 - May 2026",
+    "school": "Case Western Reserve University",
+    "location": "Ohio, USA",
+    "degree": "Master's in Computer Science",
+    "summary": "Graduate study focused on computer science, software engineering, systems, data science, and applied machine learning.",
+    "keywords": ["Computer Science", "Software Engineering", "Machine Learning", "Systems"],
+    "href": "education/case-western-ms.html"
+  },
+  {
+    "period": "Jul 2023 - Aug 2023",
+    "school": "San Francisco State University",
+    "location": "California, USA",
+    "degree": "Data Analysis with Computer Application",
+    "summary": "Received a scholarship and gained proficiency in statistical tests, earning an A grade.",
+    "keywords": ["Data Analysis", "Statistics", "Computer Applications", "Scholarship"],
+    "href": "education/san-francisco-state-data-analysis.html"
+  },
+  {
+    "period": "Sep 2020 - May 2024",
+    "school": "LDRP-ITR",
+    "location": "Gujarat, India",
+    "degree": "Bachelor of Engineering in Computer Engineering",
+    "summary": "Built the core engineering foundation in programming, databases, algorithms, mobile development, and software project work.",
+    "keywords": ["Computer Engineering", "Programming", "Databases", "Mobile Development"],
+    "href": "education/ldrp-computer-engineering.html"
+  }
+]

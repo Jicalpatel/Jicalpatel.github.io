@@ -1,0 +1,23 @@
+{
+  "eyebrow": "Ready To Build",
+  "title": "Build with impact.",
+  "cta_label": "Start a Conversation",
+  "cta_href": "#chatbot",
+  "brand_name": "Jical Patel",
+  "brand_role": "Software Developer",
+  "quick_links": [
+    { "label": "Home", "href": "#top" },
+    { "label": "About", "href": "#about" },
+    { "label": "Education", "href": "#education" },
+    { "label": "Projects", "href": "#projects" },
+    { "label": "Experience", "href": "#experience" },
+    { "label": "Contact", "href": "#contact" }
+  ],
+  "social_links": [
+    { "label": "GitHub", "href": "https://github.com/" },
+    { "label": "LinkedIn", "href": "https://www.linkedin.com/in/jical-patel" },
+    { "label": "Email", "href": "mailto:jicalharish15102002@gmail.com" },
+    { "label": "Resume", "href": "assets/Jical_Resume.pdf" }
+  ],
+  "copyright": "© 2026 Jical Patel"
+}

@@ -1,0 +1,34 @@
+[
+  {
+    "period": "May 2025 - May 2026",
+    "title": "Office Assistant",
+    "organization": "Siegal Lifelong Learning, Case Western Reserve University",
+    "summary": "Provided front-line technology support, handled client inquiries, organized administrative records, and supported management with special projects.",
+    "keywords": ["Technology Support", "Client Experience", "Administration", "Operations"],
+    "href": "experience/office-assistant-siegal.html"
+  },
+  {
+    "period": "Aug 2025 - Dec 2025",
+    "title": "Software Developer",
+    "organization": "xLab / Progressive Insurance, CWRU",
+    "summary": "Built and delivered an Agile application using GitHub workflows and technologies including iOS, Next.js, MongoDB, and Java.",
+    "keywords": ["Agile", "Next.js", "MongoDB", "Java", "iOS"],
+    "href": "experience/software-developer-xlab-progressive.html"
+  },
+  {
+    "period": "Jan 2025 - Dec 2025",
+    "title": "Graduate Assistant",
+    "organization": "Case Western Reserve University",
+    "summary": "Supported students with computer security concepts, coding, debugging, assignment evaluation, exams, and constructive technical feedback.",
+    "keywords": ["Computer Security", "Teaching", "Debugging", "Mentorship"],
+    "href": "experience/graduate-assistant-cwru.html"
+  },
+  {
+    "period": "Nov 2023 - Apr 2024",
+    "title": "Android Developer",
+    "organization": "TOPS Technology",
+    "summary": "Developed Android applications with Java, Kotlin, and Firebase; designed XML and Jetpack Compose interfaces; implemented REST API integrations.",
+    "keywords": ["Android", "Java", "Kotlin", "Firebase", "REST APIs"],
+    "href": "experience/android-developer-tops.html"
+  }
+]

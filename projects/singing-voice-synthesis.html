@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Singing Voice Synthesis | Jical Patel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body class="detail-page">
+    <div class="grain"></div>
+    <header class="site-header"><a class="logo" href="../index.html#top">JP</a><nav><a href="../index.html#projects">Projects</a><a href="../index.html#experience">Experience</a><a href="../index.html#contact">Contact</a></nav></header>
+    <main>
+      <section class="detail-hero">
+        <a class="back-link" href="../index.html#projects"><- Back to projects</a>
+        <div class="detail-kicker"><span>Spring 2026</span><span>Generative AI</span><span>Audio ML</span></div>
+        <h1>Singing Voice Synthesis</h1>
+        <p class="detail-lead">An end-to-end machine learning system that converts lyrics into sung audio using a two-stage acoustic model and neural vocoder pipeline.</p>
+      </section>
+      <section class="detail-layout">
+        <article class="detail-panel">
+          <h2>Project Story</h2>
+          <p>This project explores how modern speech and audio models can generate more natural singing voices. Instead of manually coding vocal rules, the system uses transfer learning to move from text and pitch toward mel-spectrograms, then converts those spectrograms into playable waveforms.</p>
+          <p>The pipeline uses FastSpeech2 Conformer for acoustic modeling and HiFi-GAN as the vocoder. The work also includes exploratory data analysis on the Children's Song Dataset, covering pitch distribution, note duration, syllable frequency, mel-spectrograms, and F0 contours.</p>
+          <h3>What makes it strong</h3>
+          <ul>
+            <li>Built a working text-to-audio inference path with HuggingFace models and PyTorch.</li>
+            <li>Created a Gradio interface so non-technical users can type lyrics and hear generated singing.</li>
+            <li>Connected model output with evaluation artifacts such as spectrogram and waveform comparisons.</li>
+          </ul>
+        </article>
+        <aside class="detail-panel">
+          <h3>Snapshot</h3>
+          <div class="stat-grid">
+            <div class="stat"><strong>Stack</strong><span>Python, PyTorch, Transformers, Gradio, HiFi-GAN</span></div>
+            <div class="stat"><strong>Dataset</strong><span>Children's Song Dataset with pitch, duration, and syllable annotations</span></div>
+            <div class="stat"><strong>Keywords</strong><span>Generative AI, transfer learning, audio synthesis, model inference</span></div>
+          </div>
+          <div class="detail-actions">
+            <a class="btn" href="../assets/reports/singing-voice-synthesis-spring-2026.docx">Open Report</a>
+            <a class="btn ghost" href="https://github.com/" target="_blank" rel="noreferrer">Add GitHub Link</a>
+          </div>
+        </aside>
+      </section>
+    </main>
+  </body>
+</html>

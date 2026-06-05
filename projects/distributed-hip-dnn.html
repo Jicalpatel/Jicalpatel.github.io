@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Distributed HIP DNN Pipeline | Jical Patel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body class="detail-page">
+    <div class="grain"></div>
+    <header class="site-header"><a class="logo" href="../index.html#top">JP</a><nav><a href="../index.html#projects">Projects</a><a href="../index.html#experience">Experience</a><a href="../index.html#contact">Contact</a></nav></header>
+    <main>
+      <section class="detail-hero"><a class="back-link" href="../index.html#projects"><- Back to projects</a><div class="detail-kicker"><span>Fall 2025</span><span>GPU Systems</span><span>Distributed ML</span></div><h1>Distributed HIP DNN Pipeline</h1><p class="detail-lead">A scalable architecture that connects MPI4Py data producers with AMD HIP compute workers for distributed deep learning experiments.</p></section>
+      <section class="detail-layout">
+        <article class="detail-panel"><h2>Project Story</h2><p>The system is designed around a producer-consumer flow: MPI ranks prepare and shard data, HIP workers receive mini-batches, GPU kernels run forward and backward DNN layer operations, and an orchestrator coordinates synchronization and metrics.</p><p>The architecture emphasizes practical systems thinking: batch streaming, wire formats, backpressure, GPU utilization, throughput, latency, and fair comparison against PyTorch DDP.</p><h3>What makes it strong</h3><ul><li>Combines distributed Python orchestration with lower-level GPU kernel execution.</li><li>Tracks performance metrics such as samples per second, end-to-end latency, and scale efficiency.</li><li>Designed with pluggable kernels so optimized HIP implementations can replace baseline layers.</li></ul></article>
+        <aside class="detail-panel"><h3>Snapshot</h3><div class="stat-grid"><div class="stat"><strong>Stack</strong><span>Python, MPI4Py, AMD HIP, C/C++, CMake</span></div><div class="stat"><strong>Focus</strong><span>Distributed input pipeline, GPU kernels, training loop coordination</span></div><div class="stat"><strong>Keywords</strong><span>HPC, distributed systems, GPU acceleration, benchmarking</span></div></div><div class="detail-actions"><a class="btn" href="https://github.com/CWRU-CSDS-451/f2025-team11.git" target="_blank" rel="noreferrer">Open GitHub</a><a class="btn ghost" href="../index.html#projects">Back to Portfolio</a></div></aside>
+      </section>
+    </main>
+  </body>
+</html>
