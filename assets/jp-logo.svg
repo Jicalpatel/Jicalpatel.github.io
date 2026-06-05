@@ -1,0 +1,31 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Jical Patel JP Logo</title>
+  <desc id="desc">A premium monogram logo with the letters J and P.</desc>
+  <defs>
+    <linearGradient id="edge" x1="34" y1="24" x2="222" y2="232" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#35E6C1"/>
+      <stop offset="0.52" stop-color="#7FB3FF"/>
+      <stop offset="1" stop-color="#F6F7F9"/>
+    </linearGradient>
+    <linearGradient id="letters" x1="73" y1="62" x2="190" y2="199" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F8FFFC"/>
+      <stop offset="0.45" stop-color="#B9FFF2"/>
+      <stop offset="1" stop-color="#8ABEFF"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(184 60) rotate(126) scale(170)">
+      <stop stop-color="#35E6C1" stop-opacity="0.34"/>
+      <stop offset="1" stop-color="#050505" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="softShadow" x="-30" y="-30" width="316" height="316" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#000000" flood-opacity="0.45"/>
+      <feDropShadow dx="0" dy="0" stdDeviation="8" flood-color="#35E6C1" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+  <rect width="256" height="256" rx="64" fill="#05070A"/>
+  <rect x="10" y="10" width="236" height="236" rx="58" fill="url(#glow)"/>
+  <rect x="18" y="18" width="220" height="220" rx="52" stroke="url(#edge)" stroke-width="3"/>
+  <path d="M55 202C83 202 97 188 97 160V69H72V159C72 174 66 181 55 181H45V202H55Z" fill="url(#letters)" filter="url(#softShadow)"/>
+  <path d="M117 202V69H169C195 69 211 85 211 109C211 134 195 150 169 150H142V202H117ZM142 128H166C178 128 185 121 185 109C185 98 178 91 166 91H142V128Z" fill="url(#letters)" filter="url(#softShadow)"/>
+  <path d="M53 218H205" stroke="url(#edge)" stroke-width="5" stroke-linecap="round" opacity="0.75"/>
+  <circle cx="210" cy="47" r="7" fill="#35E6C1" opacity="0.9"/>
+</svg>
