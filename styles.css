@@ -916,6 +916,7 @@ footer p {
 
 .chat-message p {
   margin: 0;
+  white-space: pre-line;
 }
 
 .chat-message.bot {

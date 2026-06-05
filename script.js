@@ -326,84 +326,297 @@ function setupChatbot() {
   const knowledge = [
     {
       intent: "projects",
-      keywords: ["project", "projects", "work", "built", "portfolio", "case study"],
-      response: "Jical's project portfolio includes MedCare, Singing Voice Synthesis, Distributed HIP DNN Pipeline, Hybrid Bucket-Radix Sorting, Co-Purchasing Recommendation, Uber Clone, and Skin Disease Identification. These cover healthcare AI, audio ML, distributed GPU systems, data mining, blockchain, mobile UI, and web development.",
+      weight: 1.1,
+      keywords: ["project", "projects", "work", "built", "build", "made", "created", "developed", "case study", "showcase", "portfolio", "application", "apps", "system"],
+      response: "Jical's project portfolio includes MedCare, Singing Voice Synthesis, Distributed HIP DNN Pipeline, Hybrid Bucket-Radix Sorting, Co-Purchasing Recommendation, Uber Clone, and Skin Disease Identification. These projects cover healthcare AI, audio ML, distributed GPU systems, data mining, blockchain, mobile UI, and web development.",
     },
     {
       intent: "experience",
-      keywords: ["experience", "job", "work history", "progressive", "xlab", "office", "assistant", "tops"],
-      response: "Jical has experience as a Software Developer with xLab / Progressive Insurance, Graduate Assistant at Case Western Reserve University, Android Developer at TOPS Technology, and Office Assistant at Siegal Lifelong Learning. His experience mixes software delivery, Android development, teaching/debugging support, and customer-facing technology support.",
+      weight: 1.1,
+      keywords: ["experience", "job", "jobs", "work history", "worked", "employment", "role", "roles", "professional", "progressive", "xlab", "office", "assistant", "tops", "internship", "company", "companies"],
+      response: "Jical has experience as a Software Developer with xLab / Progressive Insurance, Graduate Assistant at Case Western Reserve University, Android Developer at TOPS Technology, and Office Assistant at Siegal Lifelong Learning. His experience mixes Agile software delivery, Android development, teaching/debugging support, and customer-facing technology support.",
     },
     {
       intent: "education",
-      keywords: ["education", "study", "school", "university", "degree", "master", "bachelor", "cwru", "case western", "ldrp", "san francisco"],
+      weight: 1,
+      keywords: ["education", "study", "studies", "school", "college", "university", "degree", "master", "masters", "bachelor", "bachelors", "cwru", "case western", "ldrp", "san francisco", "sfsu", "academic", "academics"],
       response: "Jical is pursuing a Master's in Computer Science at Case Western Reserve University from Aug 2024 to May 2026. He also completed Data Analysis with Computer Application at San Francisco State University and earned a Bachelor of Engineering in Computer Engineering from LDRP-ITR.",
     },
     {
       intent: "skills",
-      keywords: ["skill", "skills", "stack", "technology", "programming", "tools", "language"],
+      weight: 1.1,
+      keywords: ["skill", "skills", "stack", "technology", "technologies", "programming", "tools", "language", "languages", "java", "python", "kotlin", "sql", "firebase", "android", "next", "django", "database", "frontend", "backend", "full stack", "machine learning", "ml"],
       response: "Jical's skills include Java, Kotlin, C, C++, Python, SQL, data structures and algorithms, Android Studio, Firebase, REST APIs, MySQL, SQLite, Cloud Firestore, Git, debugging, Tableau, UI/UX design, performance optimization, Next.js, Django, and machine learning.",
     },
     {
       intent: "resume",
-      keywords: ["resume", "cv", "download"],
+      weight: 1,
+      keywords: ["resume", "cv", "download", "pdf", "profile", "document"],
       response: "You can open Jical's resume from the Resume link in the footer. It includes education, experience, projects, research, certifications, technical skills, and soft skills.",
     },
     {
       intent: "contact",
-      keywords: ["contact", "email", "linkedin", "phone", "hire", "connect", "reach"],
-      response: "You can contact Jical by email at jicalharish15102002@gmail.com or through LinkedIn at linkedin.com/in/jical-patel. For his phone number, email first.",
+      weight: 1,
+      keywords: ["contact", "email", "linkedin", "phone", "hire", "connect", "reach", "message", "call", "recruiter", "interview"],
+      response: "You can contact Jical by email at jicalharish15102002@gmail.com or through LinkedIn at linkedin.com/in/jical-patel. For his phone number, please email first.",
     },
     {
       intent: "medcare",
-      keywords: ["medcare", "healthcare", "disease prediction", "django"],
+      weight: 1.25,
+      keywords: ["medcare", "healthcare", "health", "disease prediction", "prediction", "django", "medical", "diagnosis"],
       response: "MedCare is a healthcare ML project where Jical developed disease prediction machine learning models and integrated them with a Django web interface for accessible decision support.",
     },
     {
       intent: "skin disease",
-      keywords: ["skin", "disease", "tensorflow", "keras", "openvino", "75"],
+      weight: 1.25,
+      keywords: ["skin", "disease", "tensorflow", "keras", "openvino", "75", "accuracy", "diagnosis", "mobile friendly"],
       response: "Skin Disease Identification used TensorFlow, Keras, and OpenVINO. The resume highlights a 75% accuracy AI model and a mobile-friendly UI for diagnosis access.",
     },
     {
       intent: "uber clone",
-      keywords: ["uber", "blockchain", "ethereum", "smart contract", "ride", "gps"],
+      weight: 1.25,
+      keywords: ["uber", "ride", "rides", "ride hailing", "blockchain", "ethereum", "smart contract", "smart contracts", "crypto", "gps", "fare"],
       response: "The Uber Clone project is a blockchain-based ride-hailing system using smart contracts, Ethereum Rinkeby Testnet crypto payments, real-time GPS tracking, and automated fare calculations.",
     },
     {
       intent: "singing voice",
-      keywords: ["singing", "voice", "audio", "hifigan", "fastspeech", "gradio"],
+      weight: 1.25,
+      keywords: ["singing", "voice", "audio", "song", "music", "hifigan", "fastspeech", "gradio", "lyrics", "synthesis", "synthesizer"],
       response: "Singing Voice Synthesis converts lyrics into sung audio using FastSpeech2 Conformer, HiFi-GAN, transfer learning, the Children's Song Dataset, and a Gradio interface.",
     },
     {
       intent: "hip",
-      keywords: ["hip", "gpu", "mpi", "distributed", "dnn", "kernel"],
+      weight: 1.25,
+      keywords: ["hip", "gpu", "mpi", "distributed", "dnn", "kernel", "kernels", "parallel", "amd", "throughput", "latency"],
       response: "The Distributed HIP DNN Pipeline connects MPI4Py data producers with AMD HIP GPU consumers. It focuses on distributed training architecture, GPU kernels, throughput, latency, and benchmarking.",
     },
     {
       intent: "research",
-      keywords: ["research", "paper", "battery", "thermal"],
+      weight: 1,
+      keywords: ["research", "paper", "publication", "published", "battery", "thermal", "analysis", "ijrpr"],
       response: "Jical published research on Battery Efficiency through Thermal Analysis, focused on optimizing battery efficiency using thermal analysis techniques.",
     },
   ];
 
-  const normalize = (text) => text.toLowerCase().replace(/[^a-z0-9+.#\s-]/g, " ");
+  const projectCatalog = [
+    {
+      name: "MedCare",
+      aliases: ["medcare", "medical", "healthcare", "disease prediction", "django"],
+      category: ["machine learning", "healthcare", "web", "backend"],
+      summary: "MedCare combines disease prediction machine learning models with a Django web interface, turning ML output into a usable healthcare-focused web app.",
+    },
+    {
+      name: "Singing Voice Synthesis",
+      aliases: ["singing", "voice", "audio", "music", "hifigan", "fastspeech", "gradio", "lyrics"],
+      category: ["machine learning", "audio", "generative ai"],
+      summary: "Singing Voice Synthesis converts lyrics into sung audio using FastSpeech2 Conformer, HiFi-GAN, transfer learning, CSD dataset analysis, and Gradio.",
+    },
+    {
+      name: "Distributed HIP DNN Pipeline",
+      aliases: ["hip", "gpu", "mpi", "distributed", "dnn", "kernel", "amd", "parallel"],
+      category: ["systems", "gpu", "distributed", "performance"],
+      summary: "Distributed HIP DNN Pipeline connects MPI4Py data producers with AMD HIP GPU consumers, focusing on distributed training architecture and performance metrics.",
+    },
+    {
+      name: "Hybrid Bucket-Radix Sorting Study",
+      aliases: ["sorting", "radix", "bucket", "algorithm", "gpu cpu", "benchmark"],
+      category: ["algorithms", "gpu", "performance"],
+      summary: "Hybrid Bucket-Radix Sorting compares non-comparison sorting strategies across GPU and CPU architectures with attention to performance and memory behavior.",
+    },
+    {
+      name: "Co-Purchasing Analysis and Recommendation",
+      aliases: ["co-purchasing", "recommendation", "recommendations", "market basket", "data mining", "analytics"],
+      category: ["data", "recommendation", "analytics"],
+      summary: "Co-Purchasing Analysis studies product relationships and co-purchase behavior to surface recommendation and product-discovery insights.",
+    },
+    {
+      name: "Uber Clone",
+      aliases: ["uber", "ride", "blockchain", "ethereum", "smart contract", "gps", "fare"],
+      category: ["mobile", "blockchain", "product"],
+      summary: "Uber Clone is a blockchain-based ride-hailing system using smart contracts, Ethereum Rinkeby Testnet payments, GPS tracking, and automated fare calculation.",
+    },
+    {
+      name: "Skin Disease Identification",
+      aliases: ["skin", "disease", "tensorflow", "keras", "openvino", "75", "diagnosis"],
+      category: ["machine learning", "healthcare", "mobile"],
+      summary: "Skin Disease Identification uses TensorFlow, Keras, and OpenVINO with a mobile-friendly UI; the resume highlights 75% model accuracy.",
+    },
+  ];
+
+  const experienceCatalog = [
+    "Software Developer, xLab / Progressive Insurance: Agile application delivery using GitHub workflows, iOS, Next.js, MongoDB, and Java.",
+    "Graduate Assistant, CWRU: computer security support, coding/debugging help, grading, exams, and feedback.",
+    "Android Developer, TOPS Technology: Android apps with Java, Kotlin, Firebase, XML, Jetpack Compose, and REST APIs.",
+    "Office Assistant, Siegal Lifelong Learning: front-line technology support, client inquiries, records, and special projects.",
+  ];
+
+  const synonymMap = {
+    made: "built",
+    make: "built",
+    created: "built",
+    create: "built",
+    developed: "built",
+    develop: "built",
+    app: "application",
+    apps: "application",
+    technologies: "technology",
+    tech: "technology",
+    university: "school",
+    college: "school",
+    studies: "education",
+    studying: "education",
+    job: "experience",
+    jobs: "experience",
+    worked: "experience",
+    career: "experience",
+    hire: "contact",
+    hiring: "contact",
+    reach: "contact",
+    mail: "email",
+    ai: "machine learning",
+    ml: "machine learning",
+    frontend: "front end",
+    backend: "back end",
+    recruiter: "hiring",
+  };
+
+  const stopWords = new Set(["a", "an", "the", "is", "are", "was", "were", "to", "for", "of", "and", "or", "in", "on", "with", "about", "me", "you", "he", "his", "him", "jical", "patel", "tell", "show", "explain", "please", "what", "which", "can", "does", "do"]);
+
+  let lastIntent = "overview";
+  let lastProject = null;
+
+  const normalize = (text) => text
+    .toLowerCase()
+    .replace(/[^a-z0-9+.#\s-]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  const tokenize = (text) => normalize(text)
+    .split(" ")
+    .filter((word) => word.length > 1 && !stopWords.has(word))
+    .map((word) => synonymMap[word] || word);
+
+  const levenshtein = (a, b) => {
+    if (Math.abs(a.length - b.length) > 3) return 99;
+    const dp = Array.from({ length: a.length + 1 }, (_, i) => [i]);
+    for (let j = 1; j <= b.length; j += 1) dp[0][j] = j;
+    for (let i = 1; i <= a.length; i += 1) {
+      for (let j = 1; j <= b.length; j += 1) {
+        const cost = a[i - 1] === b[j - 1] ? 0 : 1;
+        dp[i][j] = Math.min(dp[i - 1][j] + 1, dp[i][j - 1] + 1, dp[i - 1][j - 1] + cost);
+      }
+    }
+    return dp[a.length][b.length];
+  };
+
+  const tokenClose = (a, b) => {
+    if (a === b) return true;
+    if (a.length >= 4 && b.length >= 4 && (a.includes(b) || b.includes(a))) return true;
+    return a.length >= 4 && b.length >= 4 && levenshtein(a, b) <= 1;
+  };
+
+  const phraseScore = (clean, phrase, tokens) => {
+    const normalizedPhrase = normalize(phrase);
+    if (clean.includes(normalizedPhrase)) return normalizedPhrase.includes(" ") ? 4 : 2.2;
+    const phraseTokens = tokenize(normalizedPhrase);
+    if (!phraseTokens.length) return 0;
+    const score = phraseTokens.reduce((total, phraseToken) => {
+      const matched = tokens.some((token) => tokenClose(token, phraseToken));
+      return total + (matched ? 1 : 0);
+    }, 0);
+    return score / Math.max(1, phraseTokens.length);
+  };
+
+  const scoreItem = (clean, tokens, keywords, weight = 1) => keywords
+    .reduce((total, keyword) => total + phraseScore(clean, keyword, tokens), 0) * weight;
+
+  const findProject = (clean, tokens) => projectCatalog
+    .map((project) => ({
+      ...project,
+      score: scoreItem(clean, tokens, [...project.aliases, ...project.category, project.name], 1.25),
+    }))
+    .sort((a, b) => b.score - a.score)[0];
+
+  const projectsByCategory = (category) => projectCatalog
+    .filter((project) => project.category.some((item) => item.includes(category) || category.includes(item)));
+
+  const listProjects = (items) => items.map((project) => `- ${project.name}: ${project.summary}`).join("\n");
+
+  const wants = (clean, words) => words.some((word) => clean.includes(word));
+
+  const getRecruiterPitch = () => "Recruiter summary: Jical is a software developer with graduate CS training, Android experience, Agile software delivery through xLab / Progressive, and practical projects across healthcare AI, audio ML, distributed GPU systems, data analytics, and blockchain. He is strongest for software engineering roles that value fast learning, product mindset, and hands-on implementation.";
 
   const getReply = (question) => {
     const clean = normalize(question);
-    if (["hi", "hello", "hey", "hii"].some((word) => clean.trim() === word)) {
-      return "Hi, I am Jical's portfolio assistant. I can answer questions about his projects, experience, education, skills, resume, and contact details.";
+    const tokens = tokenize(clean);
+
+    if (["hi", "hello", "hey", "hii", "yo"].includes(clean)) {
+      return "Hi, I am Jical's portfolio assistant. Ask me naturally about his projects, experience, education, skills, resume, or why he may be a good fit.";
+    }
+
+    if (wants(clean, ["tell me more", "more about", "that project", "that one", "details"])) {
+      if (lastProject) return `${lastProject.summary}\n\nWhy it matters: it shows Jical can connect technical implementation with a practical user-facing outcome.`;
+      if (lastIntent === "experience") return experienceCatalog.join("\n");
+      if (lastIntent === "projects") return listProjects(projectCatalog.slice(0, 4));
+    }
+
+    if (wants(clean, ["why hire", "why should", "good fit", "candidate", "strong candidate", "choose him", "hire him"])) {
+      lastIntent = "pitch";
+      return getRecruiterPitch();
+    }
+
+    if (wants(clean, ["summary", "summarize", "short intro", "introduction", "pitch", "about him"])) {
+      lastIntent = "overview";
+      return "Jical Patel is a software developer pursuing an MS in Computer Science at Case Western Reserve University. He has experience in Android, web, ML, Agile delivery, and technical support, with projects spanning healthcare AI, audio synthesis, distributed GPU systems, data mining, and blockchain.";
+    }
+
+    const project = findProject(clean, tokens);
+    if (project?.score >= 1.2) {
+      lastIntent = "project";
+      lastProject = project;
+      return project.summary;
+    }
+
+    if (wants(clean, ["machine learning", " ml ", " ai ", "healthcare", "audio", "gpu", "distributed", "mobile", "android", "blockchain", "data", "analytics", "backend", "web"])) {
+      const category = clean.includes("machine learning") || clean.includes(" ai ") || clean.includes(" ml ") ? "machine learning"
+        : clean.includes("health") ? "healthcare"
+        : clean.includes("audio") ? "audio"
+        : clean.includes("gpu") || clean.includes("distributed") ? "gpu"
+        : clean.includes("android") || clean.includes("mobile") ? "mobile"
+        : clean.includes("blockchain") ? "blockchain"
+        : clean.includes("data") || clean.includes("analytics") ? "data"
+        : clean.includes("backend") || clean.includes("web") ? "web"
+        : "";
+      const matches = projectsByCategory(category);
+      if (matches.length) {
+        lastIntent = "projects";
+        return `Projects related to ${category}:\n${listProjects(matches)}`;
+      }
     }
 
     const scored = knowledge
       .map((item) => ({
         ...item,
-        score: item.keywords.reduce((total, keyword) => total + (clean.includes(keyword) ? 1 : 0), 0),
+        score: scoreItem(clean, tokens, item.keywords, item.weight || 1),
       }))
       .sort((a, b) => b.score - a.score);
 
-    if (scored[0]?.score > 0) return scored[0].response;
+    const confident = scored.filter((item) => item.score >= 1.1).slice(0, 2);
+    if (confident.length > 1 && confident[1].score > confident[0].score * 0.72) {
+      lastIntent = confident[0].intent;
+      return confident.map((item) => item.response).join("\n\n");
+    }
+    if (confident[0]) {
+      lastIntent = confident[0].intent;
+      return confident[0].response;
+    }
 
-    return "I can help with Jical's projects, experience, education, skills, resume, research, and contact details. Try asking: 'Tell me about MedCare', 'What experience does Jical have?', or 'How can I contact Jical?'";
+    if (tokens.some((token) => ["strong", "strength", "best", "top", "highlight"].includes(token))) {
+      lastIntent = "highlights";
+      return "Top highlights: xLab / Progressive software developer experience, Android development at TOPS Technology, MedCare healthcare ML, Singing Voice Synthesis audio ML, Distributed HIP DNN Pipeline, and the Skin Disease Identification model with 75% accuracy.";
+    }
+
+    return "I may not have that exact detail, but I can answer well about Jical's projects, experience, education, skills, resume, research, and contact. Try asking: 'Which projects use AI?', 'What is his Progressive experience?', 'Give me a recruiter summary', or 'Tell me more about the GPU project.'";
   };
 
   const openChat = () => {
