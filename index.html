@@ -8,6 +8,8 @@
       name="description"
       content="Portfolio website for Jical Patel featuring projects, experience, and contact details."
     />
+    <link rel="icon" type="image/svg+xml" href="assets/jp-logo.svg" />
+    <link rel="apple-touch-icon" href="assets/jp-logo.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -18,14 +20,17 @@
       href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=20260605-graduated-rotating-bot" />
+    <link rel="stylesheet" href="styles.css?v=20260605-logo" />
   </head>
   <body>
     <div class="scroll-progress" id="scroll-progress"></div>
     <div class="grain"></div>
     <button class="compact-jp" id="compact-jp" aria-label="Open menu">JP</button>
     <header class="site-header">
-      <a class="logo" href="#top">JP</a>
+      <a class="logo" href="#top" aria-label="Jical Patel home">
+        <img src="assets/jp-logo.svg" alt="" />
+        <span>JP</span>
+      </a>
       <nav>
         <a href="#about">About</a>
         <a href="#education">Education</a>
@@ -170,6 +175,6 @@
       </section>
     </div>
 
-    <script src="script.js?v=20260605-graduated-rotating-bot"></script>
+    <script src="script.js?v=20260605-logo"></script>
   </body>
 </html>
