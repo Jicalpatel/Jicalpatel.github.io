@@ -340,7 +340,7 @@ function setupChatbot() {
       intent: "education",
       weight: 1,
       keywords: ["education", "study", "studies", "school", "college", "university", "degree", "master", "masters", "bachelor", "bachelors", "cwru", "case western", "ldrp", "san francisco", "sfsu", "academic", "academics"],
-      response: "Jical is pursuing a Master's in Computer Science at Case Western Reserve University from Aug 2024 to May 2026. He also completed Data Analysis with Computer Application at San Francisco State University and earned a Bachelor of Engineering in Computer Engineering from LDRP-ITR.",
+      response: "Jical graduated with a Master's in Computer Science from Case Western Reserve University, part of the New Ivy group of leading research universities. He also completed Data Analysis with Computer Application at San Francisco State University and earned a Bachelor of Engineering in Computer Engineering from LDRP-ITR.",
     },
     {
       intent: "skills",
@@ -357,7 +357,7 @@ function setupChatbot() {
     {
       intent: "contact",
       weight: 1,
-      keywords: ["contact", "email", "linkedin", "phone", "hire", "connect", "reach", "message", "call", "recruiter", "interview"],
+      keywords: ["contact", "email", "linkedin", "phone", "connect", "reach", "message", "call", "get in touch"],
       response: "You can contact Jical by email at jicalharish15102002@gmail.com or through LinkedIn at linkedin.com/in/jical-patel. For his phone number, please email first.",
     },
     {
@@ -469,21 +469,26 @@ function setupChatbot() {
     jobs: "experience",
     worked: "experience",
     career: "experience",
-    hire: "contact",
-    hiring: "contact",
     reach: "contact",
     mail: "email",
     ai: "machine learning",
     ml: "machine learning",
     frontend: "front end",
     backend: "back end",
-    recruiter: "hiring",
+    recruiter: "recruiter",
   };
 
   const stopWords = new Set(["a", "an", "the", "is", "are", "was", "were", "to", "for", "of", "and", "or", "in", "on", "with", "about", "me", "you", "he", "his", "him", "jical", "patel", "tell", "show", "explain", "please", "what", "which", "can", "does", "do"]);
 
   let lastIntent = "overview";
   let lastProject = null;
+  const replyRotation = {};
+
+  const rotateReply = (key, replies) => {
+    const index = replyRotation[key] || 0;
+    replyRotation[key] = index + 1;
+    return replies[index % replies.length];
+  };
 
   const normalize = (text) => text
     .toLowerCase()
@@ -544,7 +549,27 @@ function setupChatbot() {
 
   const wants = (clean, words) => words.some((word) => clean.includes(word));
 
-  const getRecruiterPitch = () => "Recruiter summary: Jical is a software developer with graduate CS training, Android experience, Agile software delivery through xLab / Progressive, and practical projects across healthcare AI, audio ML, distributed GPU systems, data analytics, and blockchain. He is strongest for software engineering roles that value fast learning, product mindset, and hands-on implementation.";
+  const getRecruiterPitch = () => rotateReply("hire", [
+    [
+      "Jical is worth hiring because he already shows the mix companies want in an early-career software engineer: practical building, fast learning, and the ability to connect technical work to real users.",
+      "Why he stands out:",
+      "- Real software delivery: xLab / Progressive Insurance Agile application work with GitHub workflows, iOS, Next.js, MongoDB, and Java.",
+      "- Mobile strength: Android development with Java, Kotlin, Firebase, REST APIs, XML, and Jetpack Compose.",
+      "- Applied AI/product mindset: MedCare, Skin Disease Identification, and Singing Voice Synthesis show ML used for practical outcomes.",
+      "- Systems depth: Distributed HIP DNN Pipeline and Hybrid Bucket-Radix Sorting show GPU, performance, and algorithmic thinking.",
+      "Best fit: software engineering roles where a team needs someone adaptable, hands-on, detail-oriented, and comfortable learning across mobile, web, data, and AI.",
+    ].join("\n"),
+    [
+      "I would position Jical as a strong software engineering candidate because he is not limited to one lane.",
+      "He brings Android experience, Agile delivery with xLab / Progressive, graduate CS training from Case Western Reserve University, and projects across ML, web, GPU systems, data, and blockchain.",
+      "That combination suggests he can learn quickly, collaborate with product/engineering teams, and turn ambiguous technical work into usable software.",
+    ].join("\n"),
+    [
+      "For hiring teams, Jical's value is range plus execution.",
+      "He has shipped Android work with Java/Kotlin/Firebase, worked in an Agile software environment, supported students with computer security/debugging, and built projects that show applied AI, backend/web, and systems thinking.",
+      "He is a good fit for teams that want someone curious, practical, and ready to grow into larger engineering ownership.",
+    ].join("\n"),
+  ]);
 
   const getReply = (question) => {
     const clean = normalize(question);
@@ -560,21 +585,28 @@ function setupChatbot() {
       if (lastIntent === "projects") return listProjects(projectCatalog.slice(0, 4));
     }
 
-    if (wants(clean, ["why hire", "why should", "good fit", "candidate", "strong candidate", "choose him", "hire him"])) {
+    if (
+      wants(clean, ["why hire", "why should", "good fit", "candidate", "strong candidate", "choose him", "hire him", "hire jical", "should we hire", "why jical"])
+      || (tokens.includes("hire") && tokens.some((token) => ["why", "should", "candidate", "fit", "choose"].includes(token)))
+    ) {
       lastIntent = "pitch";
       return getRecruiterPitch();
     }
 
     if (wants(clean, ["summary", "summarize", "short intro", "introduction", "pitch", "about him"])) {
       lastIntent = "overview";
-      return "Jical Patel is a software developer pursuing an MS in Computer Science at Case Western Reserve University. He has experience in Android, web, ML, Agile delivery, and technical support, with projects spanning healthcare AI, audio synthesis, distributed GPU systems, data mining, and blockchain.";
+      return "Jical Patel is a software developer who graduated with an MS in Computer Science from Case Western Reserve University. He has experience in Android, web, ML, Agile delivery, and technical support, with projects spanning healthcare AI, audio synthesis, distributed GPU systems, data mining, and blockchain.";
     }
 
     const project = findProject(clean, tokens);
     if (project?.score >= 1.2) {
       lastIntent = "project";
       lastProject = project;
-      return project.summary;
+      return rotateReply(`project-${project.name}`, [
+        project.summary,
+        `${project.name} is one of Jical's key portfolio pieces. ${project.summary}`,
+        `In simple terms: ${project.summary} It shows practical implementation, not just theory.`,
+      ]);
     }
 
     if (wants(clean, ["machine learning", " ml ", " ai ", "healthcare", "audio", "gpu", "distributed", "mobile", "android", "blockchain", "data", "analytics", "backend", "web"])) {
