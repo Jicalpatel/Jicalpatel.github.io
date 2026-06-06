@@ -3,6 +3,7 @@
   "firebase": {
     "apiKey": "AIzaSyAy8swj3LhDJ5ISJMNiF-GEWsOENL1lPeM",
     "authDomain": "jical-portfolio.firebaseapp.com",
+    "databaseURL": "https://jical-portfolio-default-rtdb.firebaseio.com/",
     "projectId": "jical-portfolio",
     "storageBucket": "jical-portfolio.firebasestorage.app",
     "messagingSenderId": "447079174082",

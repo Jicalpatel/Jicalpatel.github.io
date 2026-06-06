@@ -81,11 +81,8 @@ function setupLocalCounters() {
     localStorage.setItem(CLICK_KEY, "0");
   }
 
-  if (!sessionStorage.getItem(SESSION_KEY)) {
-    const nextVisits = Number(localStorage.getItem(VISIT_KEY) || String(VISIT_BASE)) + 1;
-    localStorage.setItem(VISIT_KEY, String(nextVisits));
-    sessionStorage.setItem(SESSION_KEY, "true");
-  }
+  const nextVisits = Number(localStorage.getItem(VISIT_KEY) || String(VISIT_BASE)) + 1;
+  localStorage.setItem(VISIT_KEY, String(nextVisits));
 
   const clicks = Number(localStorage.getItem(CLICK_KEY) || "0");
   if (!Number.isFinite(clicks)) localStorage.setItem(CLICK_KEY, "0");
@@ -120,39 +117,57 @@ function hasFirebaseConfig(config) {
 }
 
 async function setupFirebaseCounters(config) {
-  const [
-    { initializeApp },
-    { getDatabase, onValue, ref, runTransaction },
-  ] = await Promise.all([
-    import("https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js"),
-    import("https://www.gstatic.com/firebasejs/10.12.5/firebase-database.js"),
-  ]);
+  const baseUrl = config.firebase.databaseURL.replace(/\/$/, "");
+  const statsUrl = `${baseUrl}/portfolioStats.json`;
+  const counterUrl = (name) => `${baseUrl}/portfolioStats/${name}.json`;
 
-  const app = initializeApp(config.firebase);
-  const database = getDatabase(app);
-  const visitsRef = ref(database, "portfolioStats/visits");
-  const clicksRef = ref(database, "portfolioStats/clicks");
+  const readStats = async () => {
+    const response = await fetch(`${statsUrl}?v=${Date.now()}`, { cache: "no-store" });
+    if (!response.ok) {
+      throw new Error(`Firebase read failed: ${response.status} ${await response.text()}`);
+    }
 
-  let latestVisits = 0;
-  let latestClicks = 0;
+    const stats = await response.json();
+    const visits = Number(stats?.visits) || 0;
+    const clicks = Number(stats?.clicks) || 0;
+    renderCloudCounts(visits, clicks);
+    return { visits, clicks };
+  };
 
-  onValue(visitsRef, (snapshot) => {
-    latestVisits = Number(snapshot.val()) || 0;
-    renderCloudCounts(latestVisits, latestClicks);
-  });
+  const writeCounter = async (name, nextValue) => {
+    const response = await fetch(counterUrl(name), {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(nextValue),
+    });
 
-  onValue(clicksRef, (snapshot) => {
-    latestClicks = Number(snapshot.val()) || 0;
-    renderCloudCounts(latestVisits, latestClicks);
-  });
+    if (!response.ok) {
+      throw new Error(`Firebase ${name} write failed: ${response.status} ${await response.text()}`);
+    }
 
-  if (!sessionStorage.getItem(`${SESSION_KEY}_cloud`)) {
-    await runTransaction(visitsRef, (current) => (Number(current) || 0) + 1);
-    sessionStorage.setItem(`${SESSION_KEY}_cloud`, "true");
-  }
+    return response.json();
+  };
+
+  const incrementCounter = async (name) => {
+    try {
+      const stats = await readStats();
+      const current = Number(stats?.[name]) || 0;
+      await writeCounter(name, current + 1);
+      await readStats();
+    } catch (error) {
+      console.error(
+        `Firebase ${name} counter failed. Check databaseURL, uploaded counter-config.json, and rules.`,
+        error,
+      );
+    }
+  };
+
+  await readStats();
+  incrementCounter("visits");
+  setInterval(readStats, 5000);
 
   document.addEventListener("click", () => {
-    runTransaction(clicksRef, (current) => (Number(current) || 0) + 1);
+    incrementCounter("clicks");
   });
 }
 
